@@ -1,0 +1,13 @@
+<md-card class="user-card">
+    <md-card-header>
+      <img md-card-avatar [src]="friend?.avatarUrl" alt="Avatar">
+      <md-card-title>{{friend?.firstName}}</md-card-title>
+      <md-card-subtitle>{{+friend?.lastName}}</md-card-subtitle>
+    </md-card-header>
+    <img md-card-image [src]="friend?.picUrl" alt="Photo" class="image">
+    <md-card-content>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>OK...</button>
+    </md-card-actions>
+  </md-card>

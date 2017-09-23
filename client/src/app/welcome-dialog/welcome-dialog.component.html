@@ -1,0 +1,11 @@
+<h2 md-dialog-title>Welcome!</h2>
+<md-dialog-content>
+  <div>Use this app to monitor your friends</div>
+  <md-form-field>
+    <input mdInput placeholder="Your name" #input>
+  </md-form-field>
+
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button [md-dialog-close]="input.value">Finish</button>
+</md-dialog-actions>
