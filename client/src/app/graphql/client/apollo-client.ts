@@ -6,24 +6,30 @@ const networkInterface = createNetworkInterface({
     uri: 'http://localhost:3000/graphql',
 });
 
-const wsClient = new SubscriptionClient('ws://localhost:3000/subscriptions', {
-  reconnect: true,
-  connectionParams: {}
-});
-
-const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
-  networkInterface,
-  wsClient
-);
 
 
 const apolloClient = new ApolloClient({
-    networkInterface: networkInterfaceWithSubscriptions,
+    networkInterface: networkInterface,
 });
 
 export function getApolloClient() {
     return apolloClient;
 }
+
+
+
+
+
+// const wsClient = new SubscriptionClient('ws://localhost:3000/subscriptions', {
+//   reconnect: true,
+//   connectionParams: {}
+// });
+//
+// const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
+//   networkInterface,
+//   wsClient
+// );
+
 
 
 

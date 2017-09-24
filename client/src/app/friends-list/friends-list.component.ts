@@ -12,7 +12,7 @@ import { userAddSubscription } from '../graphql/user-added.subscription';
   template: `
     <h3>You have {{friends?.length}} Friends</h3>
     <h2 *ngIf="friends?.length < 2">Loser!!!</h2>
-    <div>New friend was added: {{ addedName}}</div>
+    <div *ngIf="addedName">New friend was added: {{ addedName}}</div>
     <button md-raised-button (click)="openNewFriendDialog()"> add friend</button>
     <div fxLayout="row" fxLayoutWrap>
       <user-card *ngFor="let user of friends" [friend]="user"></user-card>
@@ -32,13 +32,7 @@ export class FriendsListComponent implements OnInit, OnChanges {
   constructor(private apollo: Apollo, private dialogs: MdDialog) {
   }
 
-  ngOnInit() {
-    this.apollo.subscribe({
-      query: userAddSubscription,
-    }).subscribe(({friendAdded})=>{
-      this.addedName = `${friendAdded.firstName} ${friendAdded.lastName}`;
-    })
-  }
+
 
   ngOnChanges(changes: SimpleChanges) {
     if (!changes['userName'].isFirstChange()) {
@@ -60,6 +54,17 @@ export class FriendsListComponent implements OnInit, OnChanges {
     this.dialogs.open(NewFriendDialogComponent,{
       data: this.user,
     });
+  }
+
+
+
+
+  ngOnInit() {
+    // this.apollo.subscribe({
+    //   query: userAddSubscription,
+    // }).subscribe(({friendAdded})=>{
+    //   this.addedName = `${friendAdded.firstName} ${friendAdded.lastName}`;
+    // })
   }
 
 }

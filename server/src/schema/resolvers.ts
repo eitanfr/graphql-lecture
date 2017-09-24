@@ -27,12 +27,13 @@ export const resolverMap = {
         id: FRIENDS.length,
         ...friendInput
       };
-      FRIENDS.push(newFriend);
 
+      // update logic
+      FRIENDS.push(newFriend);
       const userToUpdate = FRIENDS.find(user=> user.id === userId);
       userToUpdate.friendsIds.push(newFriend.id);
 
-      pubsub.publish('friendAdded', { friendAdded: newFriend});
+      // pubsub.publish('friendAdded', { friendAdded: newFriend});
       return newFriend;
     }
   },

@@ -23,6 +23,23 @@ export const myScheme = gql`
         friends: [User] # List of friends 
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     type Mutation {
         addFriend(userId: ID!, friendInput: FriendInput!): User
     }
