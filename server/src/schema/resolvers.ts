@@ -1,4 +1,5 @@
 import { Friend, FRIENDS } from '../data/my-data';
+import { pubsub } from './pubsub';
 
 export const resolverMap = {
   Query: {
@@ -9,6 +10,10 @@ export const resolverMap = {
     // Or any other data source (REST,DB...)
     friends: (rootValue: Friend) => rootValue.friendsIds.map(id => FRIENDS.find(f => f.id === id)),
   },
+
+
+
+
 
 
 
@@ -27,7 +32,20 @@ export const resolverMap = {
       const userToUpdate = FRIENDS.find(user=> user.id === userId);
       userToUpdate.friendsIds.push(newFriend.id);
 
+      pubsub.publish('friendAdded', { friendAdded: newFriend});
       return newFriend;
     }
-  }
+  },
+
+
+
+
+
+
+
+  Subscription: {
+    friendAdded: {
+      subscribe: () => pubsub.asyncIterator('friendAdded')
+    }
+  },
 };
