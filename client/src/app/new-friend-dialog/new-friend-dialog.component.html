@@ -1,0 +1,17 @@
+<form [formGroup]="friendForm" (ngSubmit)="onSubmit()">
+  <h2 md-dialog-title>Add New Friend</h2>
+  <md-dialog-content fxLayout="column">
+    <md-form-field>
+      <input mdInput placeholder="Your first name" formControlName="firstName">
+    </md-form-field>
+    <md-form-field>
+      <input mdInput placeholder="Your last name" formControlName="lastName">
+    </md-form-field>
+    <md-form-field>
+      <input mdInput placeholder="Your age" type="number" formControlName="age">
+    </md-form-field>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button type="submit">Save</button>
+  </md-dialog-actions>
+</form>

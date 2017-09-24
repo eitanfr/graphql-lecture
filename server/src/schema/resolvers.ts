@@ -1,10 +1,33 @@
-import { FRIENDS, Friend } from './../data/my-data';
+import { Friend, FRIENDS } from '../data/my-data';
+
 export const resolverMap = {
-    Query: {
-        users: ()=> FRIENDS,
-        userByName: (rootValue,args,context)=> FRIENDS.find(friend=> friend.firstName === args.name),
-    },
-    User: {
-        friends: (rootValue: Friend)=> rootValue.friendsIds.map(id=> FRIENDS.find(f=> f.id === id)),
+  Query: {
+    users: () => FRIENDS,
+    userByName: (rootValue, args, context) => FRIENDS.find(friend => friend.firstName === args.name),
+  },
+  User: {
+    // Or any other data source (REST,DB...)
+    friends: (rootValue: Friend) => rootValue.friendsIds.map(id => FRIENDS.find(f => f.id === id)),
+  },
+
+
+
+
+
+
+  Mutation: {
+    addFriend: (root,args)=> {
+      const {userId, friendInput} = args;
+      const newFriend = {
+        id: FRIENDS.length,
+        ...friendInput
+      };
+      FRIENDS.push(newFriend);
+
+      const userToUpdate = FRIENDS.find(user=> user.id === userId);
+      userToUpdate.friendsIds.push(newFriend.id);
+
+      return newFriend;
     }
+  }
 };

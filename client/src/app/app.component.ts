@@ -1,5 +1,5 @@
 import { WelcomeDialogComponent } from './welcome-dialog/welcome-dialog.component';
-import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import { MdDialog } from "@angular/material";
 
 @Component({
@@ -11,21 +11,12 @@ export class AppComponent implements AfterContentInit {
 
   userName: string;
 
-  ngAfterViewInit(): void {
-
-  }
   constructor(private dialogs: MdDialog) { }
-  ngOnInit(): void {
-
-
-  }
 
   openDialog() {
     const dialogRef = this.dialogs.open(WelcomeDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.userName = result;
-
-      console.log( this.userName)
     });
   }
 

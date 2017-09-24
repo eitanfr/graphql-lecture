@@ -1,19 +1,18 @@
 import { resolverMap } from './resolvers';
-import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+import { makeExecutableSchema } from 'graphql-tools';
 import { myScheme } from './types';
-import { GraphQLSchema } from "graphql";
-import * as faker from 'faker';
+import { GraphQLSchema } from 'graphql';
 
 // Craete scheme
 export const schema: GraphQLSchema = makeExecutableSchema({
-    typeDefs: myScheme,
-    resolvers: resolverMap,
+  typeDefs: myScheme,
+  resolvers: resolverMap,
 });
 
 // Add mock data
 // addMockFunctionsToSchema({ schema });
 
-// Add custom mocks 
+// Add custom mocks
 // const mocks = {
 //     User: ()=> ({
 //         firstName: ()=> faker.name.firstName(),
@@ -22,6 +21,14 @@ export const schema: GraphQLSchema = makeExecutableSchema({
 //     }),
 // }
 // addMockFunctionsToSchema({ schema, mocks });
+
+
+
+
+
+
+
+
 
 
 

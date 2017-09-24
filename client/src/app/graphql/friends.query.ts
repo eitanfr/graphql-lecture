@@ -13,6 +13,7 @@ export const friendsQuery = gql`
               firstName
               lastName
               avatarUrl
+              age
             }
           }
     }

@@ -1,8 +1,9 @@
-.user-card{
-    width: 400px;
-    margin: 20px;
+.user-card {
+  width: 400px;
+  margin: 20px;
 }
 
 .image {
-    height: 350px
+  height: 350px;
+  object-fit: none;
 }
